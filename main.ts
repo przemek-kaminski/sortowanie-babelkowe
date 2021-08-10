@@ -8,36 +8,30 @@ function wypisz_liste(lista_do_wypisania: number[]) {
 }
 
 let lista = [7, 9, 5, 8, 3, 6]
+//  lista = [1, 2, 3, 4, 5, 6]
 let cos2 = 0
-let temp2 = 0
-let cos3 = 1
+let czy_byla_zamiana = 0
 function sortowanie() {
     let temp: number;
     
     for (let index = 0; index < lista.length; index++) {
-        if (lista[cos2] > lista[cos3]) {
+        if (lista[cos2] > lista[cos2 + 1]) {
             temp = lista[cos2]
-            lista[cos2] = lista[cos3]
-            lista[cos3] = temp
-            cos2 += 1
-            cos3 += 1
-        } else {
-            temp2 += 1
+            lista[cos2] = lista[cos2 + 1]
+            lista[cos2 + 1] = temp
+            czy_byla_zamiana += 1
         }
         
+        cos2 += 1
     }
 }
 
 wypisz_liste(lista)
-for (let index2 = 0; index2 < 1000; index2++) {
-    if (temp2 < lista.length) {
-        sortowanie()
-        wypisz_liste(lista)
-        cos2 = 0
-        cos3 = 1
-        temp2 = 0
-    }
-    
+while (czy_byla_zamiana > 0) {
+    sortowanie()
+    wypisz_liste(lista)
+    cos2 = 0
+    czy_byla_zamiana = 0
 }
 function posortuje_liste(lista_do_posortowania: number[]) {
     //  Tutaj coś trzeba zrobić

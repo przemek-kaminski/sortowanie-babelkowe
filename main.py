@@ -6,31 +6,28 @@ def wypisz_liste(lista_do_wypisania: List[number]):
     serial.write_line("]")
 
 lista = [7, 9, 5, 8, 3, 6]
+# lista = [1, 2, 3, 4, 5, 6]
 
 cos2 = 0
-temp2 = 0
-cos3 = 1
+czy_byla_zamiana = 0
 
 def sortowanie():
-    global cos2, cos3, temp2
+    global cos2, czy_byla_zamiana
     for index in range(lista.length):
-        if lista[cos2] > lista[cos3]:
+        if lista[cos2] > lista[cos2+1]:
             temp = lista[cos2]
-            lista[cos2] = lista[cos3]
-            lista[cos3] = temp
-            cos2 += 1
-            cos3 += 1
-        else:
-            temp2 += 1
+            lista[cos2] = lista[cos2+1]
+            lista[cos2+1] = temp
+            czy_byla_zamiana += 1
+        cos2 += 1
 
 wypisz_liste(lista)
-for index2 in range(1000):
-    if temp2 < lista.length:
-        sortowanie()
-        wypisz_liste(lista)
-        cos2 = 0
-        cos3 = 1
-        temp2 = 0
+
+while czy_byla_zamiana > 0:
+    sortowanie()
+    wypisz_liste(lista)
+    cos2 = 0
+    czy_byla_zamiana = 0
 
 def posortuje_liste(lista_do_posortowania: List[number]):
     # Tutaj coś trzeba zrobić
